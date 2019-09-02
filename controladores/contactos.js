@@ -1,10 +1,17 @@
-var Contacto = require('../modelos/contacto');
+//var Contacto = require("../modelos/contacto");
+
+var ContactoConn = require("../modelos/database");
 
 module.exports = {
-    index
+  index
 };
 
-
-function index (req, res) {
-    res.json('proximamente se consultará a la base de datos para poder responder con el recurso solicitado'); //ver como organizar las conexiones mysql
-};
+function index(req, res) {
+  ContactoConn.query("SELECT * FROM contactos", (err, rows, fields) => {
+    if (!err) {
+      res.json(rows);
+    } else {
+      console.log(err);
+    }
+  });
+}
