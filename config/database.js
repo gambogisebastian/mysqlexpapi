@@ -1,13 +1,14 @@
 var mysql = require("mysql");
-var connection = mysql.createConnection({
+
+var conn = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "6545", //12345678
   database: "test"
 });
 
-connection.connect(err => {
-  if (!err) console.log("conexion exitosa a ...");
+conn.connect(err => {
+  if (!err) console.log("conexion exitosa a la base de datos");
   else
     console.log(
       "Error de conexión a la base de datos \n Error: " +
@@ -15,4 +16,4 @@ connection.connect(err => {
     );
 });
 
-module.exports = connection;
+module.exports = conn;
